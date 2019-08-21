@@ -49,7 +49,7 @@ case 's':
 	{return false;}
 // moves the soldier
 case 'm': 
-	if(!update_location()!)
+	if(!update_location())
 	{return false;
 	}
 else 
