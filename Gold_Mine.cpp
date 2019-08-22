@@ -9,7 +9,7 @@ using namespace std;
 Gold_Mine::Gold_Mine():Game_Object()
 {
 	amount=100;
-	location= Cart_Point::Cart_Point(0,0);
+	location= Gold_Mine::get_location();
 	cout<<"Gold_Mine default constructed"<< endl;
 }
 
