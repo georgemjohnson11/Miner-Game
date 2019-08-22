@@ -1,5 +1,6 @@
 #include "Model.h"
 
+//a default gameboard for the user to play on
 Model::Model()
 {
 	time=0;
@@ -41,25 +42,10 @@ Model::Model()
 
 Model::~Model()// deconstructs all pointers
 {
-	/*for (int i=0; i<num_objects; i++)
-	{
-		delete object_ptrs[i];
-	}
-	for (int j=0; j< num_persons; j++)
-	{
-		delete (person_ptrs[j]);
-	}
-	for (int k=0; k< num_mines; k++)
-	{
-		delete (mine_ptrs[k]);
-	}
-	for (int l=0; l< num_halls; l++)
-	{
-		delete (hall_ptrs[l]);
-	}*/
 	cout<< "Model destructed."<< endl;
 }
 
+//gets the ID of a person
 Person* Model::get_Person_ptr(int id)
 {
 	if (person_ptrs[id])
@@ -68,6 +54,7 @@ Person* Model::get_Person_ptr(int id)
 		return 0;
 }
 
+//gets the id of a gold mine
 Gold_Mine* Model::get_Gold_Mine_ptr(int id)
 {
 	if (mine_ptrs[id])
@@ -76,6 +63,7 @@ Gold_Mine* Model::get_Gold_Mine_ptr(int id)
 		return 0;
 }
 
+//gets the id of a town hall
 Town_Hall* Model::get_Town_Hall_ptr(int id)
 {
 	if (hall_ptrs[id])
@@ -84,7 +72,7 @@ Town_Hall* Model::get_Town_Hall_ptr(int id)
 		return 0;
 }
 
-bool Model::update()// updates everything after it updates (if it updates)
+bool Model::update()// updates everything after it updates on the system (if it updates)
 {
 	time++;
 	if (person_ptrs[0]->update() & person_ptrs[1]->update() & person_ptrs[2]->update() & person_ptrs[3]->update())
@@ -97,6 +85,7 @@ bool Model::update()// updates everything after it updates (if it updates)
 		return false;
 	}
 
+//causes the objects to all be plotted on the grid and the time of the game (number of moves)
 void Model::display(View &view)
 {
 	cout<<"Time: "<< time<< endl;
@@ -119,6 +108,7 @@ void Model::display(View &view)
 view.draw();
 }
 
+//shows all the objects on the game
 void Model::show_status()
 {
 	for (int i=0; i<num_objects; i++)
